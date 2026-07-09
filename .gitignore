@@ -13,6 +13,7 @@ dist-ssr
 *.local
 cloudflare_deploy
 .env
+package-lock.json
 
 # Editor directories and files
 .vscode/*
