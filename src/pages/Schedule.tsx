@@ -170,7 +170,7 @@ export default function Schedule({ onBack }: ScheduleProps) {
         {/* Back Link */}
         <button
           onClick={onBack}
-          className="group inline-flex items-center gap-2 text-xs uppercase tracking-widest text-sand-medium hover:text-sand-offwhite transition-colors mb-8 w-fit cursor-pointer"
+          className="group inline-flex items-center gap-2 text-xs uppercase tracking-widest text-sand-offwhite/75 hover:text-sand-offwhite transition-colors mb-8 w-fit cursor-pointer"
         >
           <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
           Back to Terminal
@@ -191,7 +191,7 @@ export default function Schedule({ onBack }: ScheduleProps) {
                 </span>
                 <div>
                   <span className="block text-[10px] uppercase tracking-widest text-spice-gold font-bold">COGNITIVE UNIT</span>
-                  <span className="block text-[9px] text-sand-medium/40 font-mono">ID: DUNE-ADVISOR</span>
+                  <span className="block text-[9px] text-sand-offwhite/60 font-mono">ID: DUNE-ADVISOR</span>
                 </div>
               </div>
 
@@ -215,18 +215,18 @@ export default function Schedule({ onBack }: ScheduleProps) {
               </div>
 
               {/* Speech bubble */}
-              <div className="relative bg-white/70 border border-sand-medium/15 p-4 rounded-sm">
+              <div className="relative bg-white/90 border border-sand-medium/30 p-4 rounded-sm">
                 {/* Speech Bubble Arrow */}
-                <div className="absolute top-1/2 -right-2 -translate-y-1/2 w-3 h-3 bg-white border-t border-r border-sand-medium/15 rotate-45 hidden lg:block" />
+                <div className="absolute top-1/2 -right-2 -translate-y-1/2 w-3 h-3 bg-white border-t border-r border-sand-medium/30 rotate-45 hidden lg:block" />
                 
-                <p className="text-xs text-sand-light font-light leading-relaxed font-mono">
+                <p className="text-xs text-sand-offwhite font-medium leading-relaxed font-mono">
                   {getAssistantMessage()}
                 </p>
               </div>
             </div>
 
             {/* Bottom Status Clearance */}
-            <div className="border-t border-sand-medium/10 pt-4 mt-8 flex justify-between items-center text-[9px] uppercase tracking-widest text-sand-medium/50 font-mono">
+            <div className="border-t border-sand-medium/10 pt-4 mt-8 flex justify-between items-center text-[9px] uppercase tracking-widest text-sand-offwhite/60 font-mono">
               <span className="flex items-center gap-1">
                 <Sparkles size={10} className="text-spice-gold" />
                 Cognitive Active
@@ -274,7 +274,7 @@ export default function Schedule({ onBack }: ScheduleProps) {
             {step === 1 && (
               <div className="space-y-6 flex-grow">
                 <div>
-                  <span className="block text-[10px] uppercase tracking-widest text-sand-medium font-semibold mb-3">
+                  <span className="block text-[10px] uppercase tracking-widest text-sand-offwhite font-bold mb-3">
                     Select an Ingestion Date
                   </span>
                   
@@ -285,17 +285,17 @@ export default function Schedule({ onBack }: ScheduleProps) {
                         onClick={() => setSelectedDate(dateObj.fullDate)}
                         className={`p-3 rounded-sm border transition-all text-center flex flex-col justify-center items-center ${
                           selectedDate === dateObj.fullDate
-                            ? 'bg-white border-spice-gold text-sand-offwhite shadow-[0_0_10px_rgba(194,125,39,0.08)] font-semibold'
-                            : 'bg-white/30 border-sand-medium/10 hover:border-sand-medium/20 text-sand-medium'
+                            ? 'bg-[#EAE3D2] border-spice-gold text-sand-offwhite font-bold shadow-[0_0_15px_rgba(194,125,39,0.15)]'
+                            : 'bg-white/70 border-sand-medium/20 hover:border-sand-medium/40 text-sand-offwhite/80'
                         }`}
                       >
-                        <span className="text-[8px] uppercase tracking-widest block font-bold mb-1 opacity-60">
+                        <span className="text-[8px] uppercase tracking-widest block font-bold mb-1 opacity-80">
                           {dateObj.weekday}
                         </span>
-                        <span className="text-xl font-bold font-display block">
+                        <span className="text-xl font-extrabold font-display block text-sand-offwhite">
                           {dateObj.dayNum}
                         </span>
-                        <span className="text-[8px] tracking-wider block font-semibold mt-1 uppercase">
+                        <span className="text-[8px] tracking-wider block font-semibold mt-1 uppercase opacity-75">
                           {dateObj.fullDate.split(' ')[0]}
                         </span>
                       </button>
@@ -304,7 +304,7 @@ export default function Schedule({ onBack }: ScheduleProps) {
                 </div>
 
                 <div>
-                  <span className="block text-[10px] uppercase tracking-widest text-sand-medium font-semibold mb-3">
+                  <span className="block text-[10px] uppercase tracking-widest text-sand-offwhite font-bold mb-3">
                     Select Time Window
                   </span>
                   
@@ -315,11 +315,11 @@ export default function Schedule({ onBack }: ScheduleProps) {
                         onClick={() => setSelectedTime(slot)}
                         className={`p-3 rounded-sm border transition-all text-center flex items-center justify-center gap-2 ${
                           selectedTime === slot
-                            ? 'bg-white border-spice-gold text-sand-offwhite shadow-[0_0_10px_rgba(194,125,39,0.08)] font-semibold'
-                            : 'bg-white/30 border-sand-medium/10 hover:border-sand-medium/20 text-sand-medium'
+                            ? 'bg-[#EAE3D2] border-spice-gold text-sand-offwhite font-bold shadow-[0_0_15px_rgba(194,125,39,0.15)]'
+                            : 'bg-white/70 border-sand-medium/20 hover:border-sand-medium/40 text-sand-offwhite/80'
                         }`}
                       >
-                        <Clock size={12} className={selectedTime === slot ? "text-spice-gold" : "text-sand-medium/60"} />
+                        <Clock size={12} className={selectedTime === slot ? "text-spice-gold" : "text-sand-offwhite/60"} />
                         <span className="text-xs font-mono font-semibold">{slot}</span>
                       </button>
                     ))}

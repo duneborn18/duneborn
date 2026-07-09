@@ -72,7 +72,7 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
                 <button
                   key={link.label}
                   onClick={() => handleLinkClick(link.target)}
-                  className="text-xs uppercase tracking-[0.2em] text-sand-medium hover:text-sand-offwhite transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none"
+                  className="text-xs uppercase tracking-[0.2em] text-sand-offwhite/85 hover:text-sand-offwhite font-semibold transition-colors duration-200 cursor-pointer bg-transparent border-none outline-none"
                 >
                   {link.label}
                 </button>

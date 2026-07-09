@@ -48,7 +48,7 @@ export default function Hero() {
              {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-spice-gold" />
-              <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-semibold text-sand-medium">
+              <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-bold text-sand-offwhite/85">
                 AI-FIRST COGNITIVE ARCHITECTURES · BESPOKE AGENTIC SYSTEMS · END-TO-END DEPLOYMENT
               </span>
             </div>
@@ -62,7 +62,7 @@ export default function Hero() {
             </h1>
 
             {/* Metaphorical/Indirect Subheadline */}
-            <p className="mt-8 text-sm md:text-base text-sand-medium/85 font-light max-w-xl leading-relaxed">
+            <p className="mt-8 text-sm md:text-base text-sand-offwhite/90 font-medium max-w-xl leading-relaxed">
               Duneborn is an AI-first partner. We analyze your unique organizational bottlenecks, design custom agentic systems, and deploy them directly into your core workflows.
             </p>
 
@@ -207,7 +207,7 @@ export default function Hero() {
               <span className="text-base md:text-lg font-extrabold tracking-wider text-sand-offwhite font-display uppercase">
                 {val.value}
               </span>
-              <span className="text-[10px] uppercase tracking-widest text-sand-medium mt-1 font-semibold">
+              <span className="text-[10px] uppercase tracking-widest text-sand-offwhite/75 mt-1 font-bold">
                 {val.label}
               </span>
             </div>
