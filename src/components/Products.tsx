@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { FileText, ArrowRight, CheckCircle, AlertTriangle, Play, Database, FileCheck } from 'lucide-react';
+import { FileText, ArrowRight, CheckCircle, AlertTriangle, Play, Database, FileCheck, Layers, Shield, Activity, Share2, MessageSquare } from 'lucide-react';
 
-type TabType = 'scribe' | 'aegis' | 'pathfinder';
+type TabType = 'scribe' | 'aegis' | 'pathfinder' | 'netra';
 
 export default function Products() {
   const [activeTab, setActiveTab] = useState<TabType>('scribe');
@@ -65,7 +65,8 @@ export default function Products() {
           {[
             { id: 'scribe', name: 'Duneborn Scribe', subtitle: 'AI Document Parsing' },
             { id: 'aegis', name: 'Duneborn Aegis', subtitle: 'Compliance Auditing' },
-            { id: 'pathfinder', name: 'Duneborn Pathfinder', subtitle: 'Proposal Vetting & Intel' }
+            { id: 'pathfinder', name: 'Duneborn Pathfinder', subtitle: 'Proposal Vetting & Intel' },
+            { id: 'netra', name: 'Netra OS', subtitle: 'Fleet Intelligence Stack' }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -357,6 +358,166 @@ export default function Products() {
                     Proposal compliance analysis updated just now.
                   </div>
                 </div>
+              </div>
+            )}
+
+            {/* NETRA OS Tab */}
+            {activeTab === 'netra' && (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch p-6 md:p-8 animate-fade-up">
+                
+                {/* Left: Netra OS Live Fleet Monitor Mock Interface (5 cols) */}
+                <div className="lg:col-span-5 bg-white/40 border border-sand-medium/10 rounded-sm p-6 flex flex-col justify-between space-y-6">
+                  <div>
+                    {/* Top Status Header */}
+                    <div className="flex items-center justify-between border-b border-sand-medium/15 pb-4 mb-4">
+                      <div className="flex items-center gap-2">
+                        <Activity className="text-spice-gold animate-pulse" size={16} />
+                        <span className="text-xs font-bold uppercase tracking-widest text-sand-offwhite font-mono">NETRA MONITOR</span>
+                      </div>
+                      <span className="text-[9px] uppercase tracking-wider bg-green-500/10 text-green-600 px-2 py-0.5 rounded-sm font-mono font-bold">
+                        ACTIVE SECURE
+                      </span>
+                    </div>
+
+                    {/* Operational KPIs */}
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      <div className="bg-white/80 p-3 rounded-sm border border-sand-medium/10 text-center">
+                        <span className="block text-[8px] uppercase tracking-wider text-sand-medium/60 font-semibold">Active Fleet Trucks</span>
+                        <span className="text-xl font-bold font-mono text-sand-offwhite">1,482</span>
+                      </div>
+                      <div className="bg-white/80 p-3 rounded-sm border border-sand-medium/10 text-center">
+                        <span className="block text-[8px] uppercase tracking-wider text-sand-medium/60 font-semibold">Fuel Saving KPI</span>
+                        <span className="text-xl font-bold font-mono text-green-600">12.4%</span>
+                      </div>
+                      <div className="bg-white/80 p-3 rounded-sm border border-sand-medium/10 text-center">
+                        <span className="block text-[8px] uppercase tracking-wider text-sand-medium/60 font-semibold">Weekly Alerts</span>
+                        <span className="text-xl font-bold font-mono text-orange-500">0</span>
+                      </div>
+                      <div className="bg-white/80 p-3 rounded-sm border border-sand-medium/10 text-center">
+                        <span className="block text-[8px] uppercase tracking-wider text-sand-medium/60 font-semibold">Connected ERPs</span>
+                        <span className="text-xl font-bold font-mono text-sand-offwhite font-sans text-sm mt-1 block">SAP, PgSQL</span>
+                      </div>
+                    </div>
+
+                    {/* Live Processing Logs */}
+                    <span className="block text-[9px] uppercase tracking-widest text-sand-medium font-bold mb-2">SYSTEM ACTIVITY FEED</span>
+                    <div className="bg-brand-black/5 border border-sand-medium/15 p-4 rounded-sm font-mono text-[10px] space-y-2 text-sand-offwhite/90">
+                      <div className="flex items-start gap-1.5">
+                        <span className="text-spice-gold font-bold">&gt;</span>
+                        <span>Syncing vehicle telematics via Excel... <span className="text-green-600 font-semibold">[CONNECTED]</span></span>
+                      </div>
+                      <div className="flex items-start gap-1.5">
+                        <span className="text-spice-gold font-bold">&gt;</span>
+                        <span>Analyzing fuel invoice discrepancies... <span className="text-green-600 font-semibold">[18 ANOMALIES PARSED]</span></span>
+                      </div>
+                      <div className="flex items-start gap-1.5">
+                        <span className="text-spice-gold font-bold">&gt;</span>
+                        <span>Auto-generating compliance digest... <span className="text-green-600 font-semibold">[DISPATCHED]</span></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Connected Enterprise Logos */}
+                  <div>
+                    <div className="border-t border-sand-medium/15 pt-4">
+                      <span className="block text-[8px] uppercase tracking-widest text-sand-medium/60 font-bold mb-3">TRUSTED INTEGRATIONS</span>
+                      <div className="flex flex-wrap items-center gap-2 text-[10px] font-semibold text-sand-medium">
+                        <span className="bg-white/70 px-2 py-0.5 rounded-sm border border-sand-medium/10">SAP</span>
+                        <span className="bg-white/70 px-2 py-0.5 rounded-sm border border-sand-medium/10">Salesforce</span>
+                        <span className="bg-white/70 px-2 py-0.5 rounded-sm border border-sand-medium/10">Microsoft 365</span>
+                        <span className="bg-white/70 px-2 py-0.5 rounded-sm border border-sand-medium/10">PostgreSQL</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right: Operational Stack Grid (7 cols) */}
+                <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 bg-spice-gold/10 border border-spice-gold/20 text-spice-gold text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-sm w-fit mb-4">
+                      NETRA OS
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight text-sand-offwhite leading-tight">
+                      The Complete Operational <br />
+                      Intelligence Stack
+                    </h3>
+                    <p className="mt-3 text-sm text-sand-offwhite/80 font-medium leading-relaxed">
+                      Everything you need to turn raw fleet telematics, invoicing, and logistics data into automated action.
+                    </p>
+                  </div>
+
+                  {/* 2x2 Feature Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Card 1 */}
+                    <div className="p-4 bg-white/75 border border-sand-medium/15 rounded-sm hover:border-spice-gold/40 transition-all">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="p-1 bg-spice-gold/15 border border-spice-gold/20 rounded-sm">
+                          <Layers className="text-spice-gold" size={14} />
+                        </span>
+                        <h4 className="text-xs uppercase tracking-wider font-bold text-sand-offwhite">Autonomous Agent OS</h4>
+                      </div>
+                      <p className="text-[11px] text-sand-medium/95 leading-relaxed font-medium">
+                        Subscribe to specialized AI agents that monitor anomalies, send daily digests, and optimize schedules.
+                      </p>
+                      <div className="flex flex-wrap gap-1 mt-2.5">
+                        <span className="text-[8px] bg-sand-light/50 text-sand-medium px-1.5 py-0.5 rounded-sm">WORKFLOWS</span>
+                        <span className="text-[8px] bg-sand-light/50 text-sand-medium px-1.5 py-0.5 rounded-sm">COST TRACKING</span>
+                      </div>
+                    </div>
+
+                    {/* Card 2 */}
+                    <div className="p-4 bg-white/75 border border-sand-medium/15 rounded-sm hover:border-spice-gold/40 transition-all">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="p-1 bg-spice-gold/15 border border-spice-gold/20 rounded-sm">
+                          <Share2 className="text-spice-gold" size={14} />
+                        </span>
+                        <h4 className="text-xs uppercase tracking-wider font-bold text-sand-offwhite">Universal Connectors</h4>
+                      </div>
+                      <p className="text-[11px] text-sand-medium/95 leading-relaxed font-medium">
+                        Securely sync telemetry and logistics data from Excel, SharePoint, and ERP databases with a single click.
+                      </p>
+                    </div>
+
+                    {/* Card 3 */}
+                    <div className="p-4 bg-white/75 border border-sand-medium/15 rounded-sm hover:border-spice-gold/40 transition-all">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="p-1 bg-spice-gold/15 border border-spice-gold/20 rounded-sm">
+                          <MessageSquare className="text-spice-gold" size={14} />
+                        </span>
+                        <h4 className="text-xs uppercase tracking-wider font-bold text-sand-offwhite">Conversational BI</h4>
+                      </div>
+                      <p className="text-[11px] text-sand-medium/95 leading-relaxed font-medium">
+                        Ask complex questions about your fleet fuel logs, operational hours, and maintenance costs in plain English.
+                      </p>
+                    </div>
+
+                    {/* Card 4 */}
+                    <div className="p-4 bg-white/75 border border-sand-medium/15 rounded-sm hover:border-spice-gold/40 transition-all">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="p-1 bg-spice-gold/15 border border-spice-gold/20 rounded-sm">
+                          <Shield className="text-spice-gold" size={14} />
+                        </span>
+                        <h4 className="text-xs uppercase tracking-wider font-bold text-sand-offwhite">Enterprise Security</h4>
+                      </div>
+                      <p className="text-[11px] text-sand-medium/95 leading-relaxed font-medium">
+                        Data models never train public models. Role-based access controls integrated with Entra ID Single Sign-On.
+                      </p>
+                      <div className="flex flex-wrap gap-1 mt-2.5">
+                        <span className="text-[8px] bg-sand-light/50 text-sand-medium px-1.5 py-0.5 rounded-sm">SOC2 TYPE II</span>
+                        <span className="text-[8px] bg-sand-light/50 text-sand-medium px-1.5 py-0.5 rounded-sm">SSO / OAUTH</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-black text-white hover:bg-spice-gold hover:text-brand-black font-semibold text-xs uppercase tracking-widest transition-all duration-300 rounded-sm w-fit mt-4 cursor-pointer"
+                  >
+                    Deploy Netra OS
+                    <ArrowRight size={14} />
+                  </a>
+                </div>
+
               </div>
             )}
 
