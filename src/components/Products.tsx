@@ -66,7 +66,7 @@ export default function Products() {
             { id: 'scribe', name: 'Duneborn Scribe', subtitle: 'AI Document Parsing' },
             { id: 'aegis', name: 'Duneborn Aegis', subtitle: 'Compliance Auditing' },
             { id: 'pathfinder', name: 'Duneborn Pathfinder', subtitle: 'Proposal Vetting & Intel' },
-            { id: 'netra', name: 'Netra OS', subtitle: 'Fleet Intelligence Stack' }
+            { id: 'netra', name: 'Netra', subtitle: 'Fleet Intelligence Stack' }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -365,7 +365,7 @@ export default function Products() {
             {activeTab === 'netra' && (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch p-6 md:p-8 animate-fade-up">
                 
-                {/* Left: Netra OS Live Fleet Monitor Mock Interface (5 cols) */}
+                {/* Left: Netra Live Fleet Monitor Mock Interface (5 cols) */}
                 <div className="lg:col-span-5 bg-white/40 border border-sand-medium/10 rounded-sm p-6 flex flex-col justify-between space-y-6">
                   <div>
                     {/* Top Status Header */}
@@ -435,7 +435,7 @@ export default function Products() {
                 <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
                   <div>
                     <div className="inline-flex items-center gap-1.5 bg-spice-gold/10 border border-spice-gold/20 text-spice-gold text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-sm w-fit mb-4">
-                      NETRA OS
+                      NETRA
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight text-sand-offwhite leading-tight">
                       The Complete Operational <br />
@@ -513,7 +513,7 @@ export default function Products() {
                     href="#contact"
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-black text-white hover:bg-spice-gold hover:text-brand-black font-semibold text-xs uppercase tracking-widest transition-all duration-300 rounded-sm w-fit mt-4 cursor-pointer"
                   >
-                    Deploy Netra OS
+                    Deploy Netra
                     <ArrowRight size={14} />
                   </a>
                 </div>
