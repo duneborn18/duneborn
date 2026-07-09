@@ -24,7 +24,7 @@ export default function Hero() {
         <img
           src="/dune_hero_bg.png"
           alt="Dune Landscape"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.25]"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.62]"
           style={{ transform: `translateY(${scrollY * 0.12}px)` }}
         />
         {/* Soft Sand-Milk ambient cloud behind text */}
@@ -89,7 +89,7 @@ export default function Hero() {
           <div className="lg:col-span-5 flex justify-center items-center relative min-h-[350px] md:min-h-[450px]">
             
             {/* Outer solar orbit lines and sunset bloom */}
-            <div className="absolute w-[320px] md:w-[450px] h-[320px] md:h-[450px] rounded-full border border-sand-medium/25 border-dashed animate-slow-drift" />
+            <div className="absolute w-[320px] md:w-[450px] h-[320px] md:h-[450px] rounded-full border border-sand-medium/65 border-dashed animate-slow-drift" />
             
             <svg
               className="w-[300px] md:w-[420px] h-[300px] md:h-[420px] relative z-10"
@@ -100,7 +100,8 @@ export default function Hero() {
               {/* Planetary curved horizon arc */}
               <path
                 d="M 10 380 Q 200 240 390 380"
-                stroke="url(#orbitArcGrad)"
+                stroke="#C27D27"
+                strokeOpacity="0.75"
                 strokeWidth="2.5"
                 fill="none"
               />
@@ -110,7 +111,8 @@ export default function Hero() {
                 cx="200"
                 cy="200"
                 r="130"
-                stroke="url(#ringGrad)"
+                stroke="#6E6252"
+                strokeOpacity="0.55"
                 strokeWidth="1.25"
                 style={{ transform: `rotate(${ringRotate}deg)`, transformOrigin: '200px 200px' }}
               />
@@ -119,7 +121,8 @@ export default function Hero() {
                 cx="200"
                 cy="200"
                 r="165"
-                stroke="url(#ringGradDim)"
+                stroke="#6E6252"
+                strokeOpacity="0.4"
                 strokeWidth="0.75"
                 strokeDasharray="4 8"
                 style={{ transform: `rotate(-${ringRotate * 0.5}deg)`, transformOrigin: '200px 200px' }}
@@ -148,28 +151,14 @@ export default function Hero() {
 
               {/* Graphic Gradients & Definitions */}
               <defs>
-                <linearGradient id="orbitArcGrad" x1="10" y1="300" x2="390" y2="300" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#C9A876" stopOpacity="0" />
-                  <stop offset="50%" stopColor="#D89B4A" stopOpacity="0.75" />
-                  <stop offset="100%" stopColor="#E4C89A" stopOpacity="0" />
-                </linearGradient>
-                <linearGradient id="ringGrad" x1="70" y1="70" x2="330" y2="330" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#C9A876" stopOpacity="0.3" />
-                  <stop offset="50%" stopColor="#F5F2EB" stopOpacity="0.05" />
-                  <stop offset="100%" stopColor="#D89B4A" stopOpacity="0.4" />
-                </linearGradient>
-                <linearGradient id="ringGradDim" x1="35" y1="35" x2="365" y2="365" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#E4C89A" stopOpacity="0.15" />
-                  <stop offset="100%" stopColor="#F5F2EB" stopOpacity="0" />
-                </linearGradient>
                 <radialGradient id="dimSunGrad" cx="0.5" cy="0.5" r="0.5">
-                  <stop offset="0%" stopColor="#C9A876" stopOpacity="0.5" />
-                  <stop offset="70%" stopColor="#C9A876" stopOpacity="0.08" />
+                  <stop offset="0%" stopColor="#C9A876" stopOpacity="0.8" />
+                  <stop offset="70%" stopColor="#C9A876" stopOpacity="0.3" />
                   <stop offset="100%" stopColor="#F5F2EB" stopOpacity="0" />
                 </radialGradient>
                 <radialGradient id="brightSunGrad" cx="0.5" cy="0.5" r="0.5">
-                  <stop offset="0%" stopColor="#D89B4A" stopOpacity="0.9" />
-                  <stop offset="50%" stopColor="#C9A876" stopOpacity="0.4" />
+                  <stop offset="0%" stopColor="#D89B4A" stopOpacity="1.0" />
+                  <stop offset="50%" stopColor="#C9A876" stopOpacity="0.65" />
                   <stop offset="100%" stopColor="#F5F2EB" stopOpacity="0" />
                 </radialGradient>
                 <filter id="sunGlow" x="-50%" y="-50%" width="200%" height="200%">
