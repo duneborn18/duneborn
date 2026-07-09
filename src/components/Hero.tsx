@@ -4,10 +4,23 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col justify-between overflow-hidden pt-36 pb-16 bg-brand-black">
       
-      {/* Background Volumetric Gradients & Ambient Tech Grid */}
+      {/* Background Video & Tech Grid */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        {/* Engineering Blueprint Grid Pattern */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.09]" xmlns="http://www.w3.org/2000/svg">
+        {/* Background Video with high sharpness */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.48]"
+        >
+          <source src="/dune_hero_bg.mp4" type="video/mp4" />
+          <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c02277350c385f9d5e197d135ef0073b&profile_id=139&oauth2_token_id=57447761" type="video/mp4" />
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-wind-blowing-sand-over-dunes-in-a-desert-34300-large.mp4" type="video/mp4" />
+        </video>
+
+        {/* Engineering Blueprint Grid Pattern overlayed on top of video */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="techGrid" width="60" height="60" patternUnits="userSpaceOnUse">
               <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#6E6252" strokeWidth="0.5" />
@@ -21,16 +34,16 @@ export default function Hero() {
           <circle cx="50%" cy="50%" r="480" stroke="#6E6252" strokeWidth="0.5" fill="none" strokeDasharray="12 12" />
         </svg>
 
-        {/* Soft, modern ambient glows to replace heavy space dust */}
-        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full opacity-60" 
-          style={{ background: 'radial-gradient(circle, rgba(228,200,154,0.3) 0%, rgba(245,242,235,0) 70%)' }}
+        {/* Soft, modern ambient glows to blend video with sand theme */}
+        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full opacity-50" 
+          style={{ background: 'radial-gradient(circle, rgba(228,200,154,0.25) 0%, rgba(245,242,235,0) 70%)' }}
         />
-        <div className="absolute top-[20%] right-[10%] w-[60%] h-[60%] rounded-full opacity-55"
-          style={{ background: 'radial-gradient(circle, rgba(216,155,74,0.2) 0%, rgba(228,200,154,0.06) 60%, rgba(245, 242, 235, 0) 80%)' }}
+        <div className="absolute top-[20%] right-[10%] w-[60%] h-[60%] rounded-full opacity-45"
+          style={{ background: 'radial-gradient(circle, rgba(216,155,74,0.15) 0%, rgba(228,200,154,0.05) 60%, rgba(245, 242, 235, 0) 80%)' }}
         />
         
         {/* SVG Dot grid overlay */}
-        <div className="absolute inset-0 bg-dot-grid opacity-35" />
+        <div className="absolute inset-0 bg-dot-grid opacity-25" />
       </div>
 
       {/* Hero Content Grid */}
