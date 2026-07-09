@@ -54,16 +54,17 @@ export default function Hero() {
             </div>
 
             {/* Monumental Headline */}
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-sand-offwhite leading-[1.1] uppercase">
-              We Engineer & <br />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-sand-offwhite leading-[1.15] uppercase">
+              We Diagnose Bottlenecks. <br />
+              We Build Bespoke Agents. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sand-light via-sand-medium to-spice-gold text-glow-sand">
-                Deploy Cognitive Agents.
+                We Deploy the Systems.
               </span>
             </h1>
 
             {/* Metaphorical/Indirect Subheadline */}
             <p className="mt-8 text-sm md:text-base text-sand-offwhite/90 font-medium max-w-xl leading-relaxed">
-              Duneborn is an AI-first partner. We analyze your unique organizational bottlenecks, design custom agentic systems, and deploy them directly into your core workflows.
+              Duneborn is a forward-looking, AI-first engineering partner. We audit complex operational bottlenecks, design custom agentic software systems tailored to solve them, and handle full integration and deployment into your existing infrastructure.
             </p>
 
             {/* Actions */}

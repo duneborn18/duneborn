@@ -4,27 +4,27 @@ export default function Timeline() {
   const steps = [
     {
       icon: <Eye className="text-spice-gold" size={20} />,
-      title: 'Discover',
-      subtitle: 'Systemic Audit',
-      description: 'We audit your existing workflow pipelines, operational protocols, and logjams to outline specific bottlenecks.'
+      title: 'Diagnose',
+      subtitle: 'Understand Bottlenecks',
+      description: 'We audit your workflow pipelines and database schemas to understand and map complex bottlenecks.'
     },
     {
       icon: <FileCode className="text-spice-gold" size={20} />,
-      title: 'Design',
-      subtitle: 'Model Engineering',
-      description: 'We design custom cognitive engines, secure AI adapters, and compliance schemas matching your operational constraints.'
+      title: 'Build',
+      subtitle: 'Bespoke Agentic Design',
+      description: 'We engineer custom cognitive architectures, LLM agents, and compliance layers built to solve those bottlenecks.'
     },
     {
       icon: <Server className="text-spice-gold" size={20} />,
       title: 'Deploy',
-      subtitle: 'Enterprise Integration',
-      description: 'We host the platform on-premises or inside custom secure clouds, linking securely into your internal database systems.'
+      subtitle: 'Production Integration',
+      description: 'We host and integrate the systems securely on your private cloud or premises, connecting directly to your tools.'
     },
     {
       icon: <Zap className="text-spice-gold" size={20} />,
-      title: 'Scale',
-      subtitle: 'Quiet Automation',
-      description: 'We roll out cognitive agents across all departments, automating cognitive workflows and auditing in real-time.'
+      title: 'Automate',
+      subtitle: 'Continuous Scale',
+      description: 'We roll out your bespoke agentic systems to automate operations, manage compliance, and audit in real-time.'
     }
   ];
 
@@ -41,9 +41,8 @@ export default function Timeline() {
           <h2 className="text-2xl md:text-4xl font-bold uppercase tracking-tight text-sand-offwhite">
             How Duneborn Operates
           </h2>
-          <p className="mt-4 text-sm md:text-base text-sand-medium/80 font-light max-w-xl">
-            We deploy a robust, phased integration protocol to map, design, and host cognitive architectures 
-            without disrupting ongoing day-to-day operations.
+          <p className="mt-4 text-sm md:text-base text-sand-offwhite/80 font-medium max-w-xl">
+            We operate as your dedicated AI-first engineering partner. We diagnose your specific organizational bottlenecks, build custom agentic systems, and deploy them directly into production.
           </p>
         </div>
 
