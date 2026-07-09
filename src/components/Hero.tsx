@@ -24,16 +24,16 @@ export default function Hero() {
         <img
           src="/dune_hero_bg.png"
           alt="Dune Landscape"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.14] mix-blend-multiply"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.3] mix-blend-multiply"
           style={{ transform: `translateY(${scrollY * 0.12}px)` }}
         />
         {/* Soft Sand-Milk ambient cloud behind text */}
-        <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-radial-gradient from-sand-medium/8 via-transparent to-transparent opacity-60 mix-blend-multiply" 
-          style={{ background: 'radial-gradient(circle, rgba(228,200,154,0.15) 0%, rgba(245,242,235,0) 70%)' }}
+        <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-radial-gradient from-sand-medium/8 via-transparent to-transparent opacity-80 mix-blend-multiply" 
+          style={{ background: 'radial-gradient(circle, rgba(228,200,154,0.18) 0%, rgba(245,242,235,0) 70%)' }}
         />
         {/* Large Golden Dusk refraction in the center-right */}
-        <div className="absolute -bottom-[20%] -right-[10%] w-[70%] h-[75%] rounded-full bg-radial-gradient from-spice-gold/10 via-sand-medium/5 to-transparent opacity-75 mix-blend-multiply"
-          style={{ background: 'radial-gradient(circle, rgba(216,155,74,0.12) 0%, rgba(228,200,154,0.06) 50%, rgba(245, 242, 235, 0) 80%)' }}
+        <div className="absolute -bottom-[20%] -right-[10%] w-[70%] h-[75%] rounded-full bg-radial-gradient from-spice-gold/10 via-sand-medium/5 to-transparent opacity-80 mix-blend-multiply"
+          style={{ background: 'radial-gradient(circle, rgba(216,155,74,0.15) 0%, rgba(228,200,154,0.08) 50%, rgba(245, 242, 235, 0) 80%)' }}
         />
         {/* SVG Dot grid overlay */}
         <div className="absolute inset-0 bg-dot-grid opacity-30" />
@@ -89,7 +89,7 @@ export default function Hero() {
           <div className="lg:col-span-5 flex justify-center items-center relative min-h-[350px] md:min-h-[450px]">
             
             {/* Outer solar orbit lines and sunset bloom */}
-            <div className="absolute w-[320px] md:w-[450px] h-[320px] md:h-[450px] rounded-full border border-sand-medium/10 border-dashed animate-slow-drift" />
+            <div className="absolute w-[320px] md:w-[450px] h-[320px] md:h-[450px] rounded-full border border-sand-medium/25 border-dashed animate-slow-drift" />
             
             <svg
               className="w-[300px] md:w-[420px] h-[300px] md:h-[420px] relative z-10"
@@ -101,7 +101,7 @@ export default function Hero() {
               <path
                 d="M 10 380 Q 200 240 390 380"
                 stroke="url(#orbitArcGrad)"
-                strokeWidth="1.5"
+                strokeWidth="2.5"
                 fill="none"
               />
               
@@ -111,7 +111,7 @@ export default function Hero() {
                 cy="200"
                 r="130"
                 stroke="url(#ringGrad)"
-                strokeWidth="0.75"
+                strokeWidth="1.25"
                 style={{ transform: `rotate(${ringRotate}deg)`, transformOrigin: '200px 200px' }}
               />
               
@@ -120,7 +120,7 @@ export default function Hero() {
                 cy="200"
                 r="165"
                 stroke="url(#ringGradDim)"
-                strokeWidth="0.5"
+                strokeWidth="0.75"
                 strokeDasharray="4 8"
                 style={{ transform: `rotate(-${ringRotate * 0.5}deg)`, transformOrigin: '200px 200px' }}
               />
