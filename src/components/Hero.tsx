@@ -24,19 +24,19 @@ export default function Hero() {
         <img
           src="/dune_hero_bg.png"
           alt="Dune Landscape"
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.3] mix-blend-multiply"
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.25]"
           style={{ transform: `translateY(${scrollY * 0.12}px)` }}
         />
         {/* Soft Sand-Milk ambient cloud behind text */}
-        <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-radial-gradient from-sand-medium/8 via-transparent to-transparent opacity-80 mix-blend-multiply" 
-          style={{ background: 'radial-gradient(circle, rgba(228,200,154,0.18) 0%, rgba(245,242,235,0) 70%)' }}
+        <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] rounded-full opacity-40" 
+          style={{ background: 'radial-gradient(circle, rgba(228,200,154,0.3) 0%, rgba(245,242,235,0) 70%)' }}
         />
         {/* Large Golden Dusk refraction in the center-right */}
-        <div className="absolute -bottom-[20%] -right-[10%] w-[70%] h-[75%] rounded-full bg-radial-gradient from-spice-gold/10 via-sand-medium/5 to-transparent opacity-80 mix-blend-multiply"
-          style={{ background: 'radial-gradient(circle, rgba(216,155,74,0.15) 0%, rgba(228,200,154,0.08) 50%, rgba(245, 242, 235, 0) 80%)' }}
+        <div className="absolute -bottom-[20%] -right-[10%] w-[70%] h-[75%] rounded-full opacity-40"
+          style={{ background: 'radial-gradient(circle, rgba(216,155,74,0.25) 0%, rgba(228,200,154,0.1) 50%, rgba(245, 242, 235, 0) 80%)' }}
         />
         {/* SVG Dot grid overlay */}
-        <div className="absolute inset-0 bg-dot-grid opacity-30" />
+        <div className="absolute inset-0 bg-dot-grid opacity-35" />
       </div>
 
       {/* Hero Content Grid */}

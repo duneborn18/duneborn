@@ -48,8 +48,15 @@ export default function Logo({ className = "text-sand-offwhite", height = 24 }: 
         <path d="M 305 35 C 305 15 330 15 330 35" />
       </g>
       
-      {/* Small glowing spice-gold dot at the end */}
-      <circle cx="350" cy="28" r="4" fill="#D89B4A" className="animate-pulse-slow shadow-[0_0_8px_#D89B4A]" />
+      {/* Glowing gold dot at the end, styled for light background visibility */}
+      <circle
+        cx="350"
+        cy="28"
+        r="5.5"
+        fill="#C27D27"
+        className="animate-pulse"
+        style={{ filter: 'drop-shadow(0 0 4px rgba(194, 125, 39, 0.5))' }}
+      />
     </svg>
   );
 }
