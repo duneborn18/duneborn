@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-black: #F5F2EB; /* Light milky-sand base background */
+  --color-sand-medium: #6E6252; /* Darker warm bronze for high readability text */
+  --color-sand-light: #EAE3D2; /* Secondary sand layer for borders/backgrounds */
+  --color-spice-gold: #C27D27; /* Richer, higher-contrast gold accent */
+  --color-sand-offwhite: #27221C; /* Deep obsidian-bronze for headers */
+  
+  --font-display: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slow-drift: slow-drift 40s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 10s ease-in-out infinite;
+  --animate-glow: glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slow-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(2%, 1.5%) scale(1.04) rotate(0.5deg);
+  }
+  66% {
+    transform: translate(-1.5%, 2.5%) scale(0.98) rotate(-0.5deg);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 10px rgba(194, 125, 39, 0.15)) drop-shadow(0 0 20px rgba(110, 98, 82, 0.05));
+  }
+  to {
+    filter: drop-shadow(0 0 25px rgba(194, 125, 39, 0.35)) drop-shadow(0 0 45px rgba(110, 98, 82, 0.15));
+  }
+}
+
+@utility bg-dot-grid {
+  background-image: radial-gradient(rgba(110, 98, 82, 0.09) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
+@utility bg-radial-sand {
+  background: radial-gradient(circle at center, rgba(234, 227, 210, 0.5) 0%, rgba(245, 242, 235, 0) 75%);
+}
+
+@utility bg-horizon-gradient {
+  background: linear-gradient(to top, rgba(234, 227, 210, 0.3) 0%, rgba(245, 242, 235, 0) 100%);
+}
+
+@utility text-glow-sand {
+  text-shadow: 0 0 20px rgba(194, 125, 39, 0.1);
+}
+
+@utility border-glow-sand {
+  box-shadow: 0 0 15px rgba(110, 98, 82, 0.02) inset;
+  border-color: rgba(110, 98, 82, 0.12);
+}
+
+@utility glass-panel {
+  background: rgba(255, 255, 255, 0.55); /* Frosted light sand glass */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(110, 98, 82, 0.12);
+}
+
+@utility glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(194, 125, 39, 0.35);
+    box-shadow: 0 12px 30px -10px rgba(110, 98, 82, 0.12), 0 0 20px 0 rgba(194, 125, 39, 0.05);
+    transform: translateY(-2px);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F2EB;
+}
+::-webkit-scrollbar-thumb {
+  background: #EAE3D2;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6E6252;
+}
+
+body {
+  background-color: #F5F2EB; /* Light warm sand base */
+  color: #363028; /* Readable dark slate-sand body text */
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
