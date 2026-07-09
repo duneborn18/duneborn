@@ -1,20 +1,6 @@
-import { useEffect, useState } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 
 export default function Hero() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const sunY = scrollY * 0.25;
-  const ringRotate = scrollY * 0.05;
-
   return (
     <section className="relative min-h-screen flex flex-col justify-between overflow-hidden pt-36 pb-16 bg-brand-black">
       

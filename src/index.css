@@ -99,17 +99,18 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F2EB;
+  background: #EAE3D2; /* Warm sand track border */
 }
 ::-webkit-scrollbar-thumb {
-  background: #EAE3D2;
-  border-radius: 4px;
+  background: #6E6252; /* Darker warm bronze thumb */
+  border-radius: 5px;
+  border: 2px solid #EAE3D2; /* Give it space inside track */
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6E6252;
+  background: #363028; /* Deep dark sand on hover */
 }
 
 body {
