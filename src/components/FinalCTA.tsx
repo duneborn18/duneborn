@@ -1,10 +1,21 @@
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 interface FinalCTAProps {
-  onNavigate: (page: 'home' | 'schedule') => void;
+  onNavigate?: (page: 'home' | 'schedule') => void;
 }
 
 export default function FinalCTA({ onNavigate }: FinalCTAProps) {
+  const navigate = useNavigate();
+
+  const handleAction = () => {
+    if (onNavigate) {
+      onNavigate('schedule');
+    } else {
+      navigate('/schedule');
+    }
+  };
+
   return (
     <section id="contact" className="py-32 bg-brand-black relative overflow-hidden border-t border-sand-medium/10">
       {/* Background SVG Grid & Glowing Dusk Horizon */}
@@ -68,7 +79,7 @@ export default function FinalCTA({ onNavigate }: FinalCTAProps) {
             </div>
             
             <button
-              onClick={() => onNavigate('schedule')}
+              onClick={handleAction}
               className="w-full group inline-flex items-center justify-center gap-2 px-8 py-4 bg-spice-gold text-brand-black font-semibold text-xs uppercase tracking-widest hover:bg-transparent hover:text-spice-gold border border-spice-gold transition-all duration-300 rounded-sm shadow-[0_4px_15px_rgba(216,155,74,0.25)] hover:shadow-[0_4px_25px_rgba(216,155,74,0.4)] cursor-pointer"
             >
               Initiate Secure Scheduler

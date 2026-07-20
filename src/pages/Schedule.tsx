@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Clock, ArrowLeft, ArrowRight, CheckCircle, ShieldAlert, Cpu, Sparkles, Send } from 'lucide-react';
 
 interface ScheduleProps {
-  onBack: () => void;
+  onBack?: () => void;
 }
 
 const TIME_SLOTS = [
@@ -31,11 +32,20 @@ const getNextDays = () => {
 };
 
 export default function Schedule({ onBack }: ScheduleProps) {
+  const navigate = useNavigate();
   const [step, setStep] = useState<number>(1);
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
+
+  const handleBackAction = () => {
+    if (onBack) {
+      onBack();
+    } else {
+      navigate(-1);
+    }
+  };
   
   const [formData, setFormData] = useState({
     name: '',
@@ -169,7 +179,7 @@ export default function Schedule({ onBack }: ScheduleProps) {
         
         {/* Back Link */}
         <button
-          onClick={onBack}
+          onClick={handleBackAction}
           className="group inline-flex items-center gap-2 text-xs uppercase tracking-widest text-sand-offwhite/75 hover:text-sand-offwhite transition-colors mb-8 w-fit cursor-pointer"
         >
           <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />

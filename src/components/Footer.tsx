@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Shield } from 'lucide-react';
 import Logo from './Logo';
 
@@ -13,9 +14,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Logo and Tagline */}
           <div className="md:col-span-2 flex flex-col gap-4">
-            <a href="#" className="flex items-center gap-1.5 group w-fit">
+            <Link to="/" className="flex items-center gap-1.5 group w-fit">
               <Logo height={16} className="text-sand-offwhite" />
-            </a>
+            </Link>
             <p className="text-xs text-sand-medium/60 font-light max-w-sm leading-relaxed">
               Deploys cognitive software architectures and agentic automation engines for large enterprises and global conglomerates.
             </p>
@@ -24,17 +25,23 @@ export default function Footer() {
           {/* Nav Links */}
           <div className="flex flex-col gap-3">
             <span className="text-[10px] uppercase tracking-widest text-spice-gold font-semibold mb-2">
-              Sectors & Services
+              Navigation
             </span>
-            {['Solutions', 'Products', 'Partners', 'About'].map((link) => (
-              <a
-                key={link}
-                href={`#${link.toLowerCase().replace(' ', '-')}`}
-                className="text-xs text-sand-medium hover:text-sand-offwhite transition-colors duration-200"
-              >
-                {link}
-              </a>
-            ))}
+            <Link to="/" className="text-xs text-sand-medium hover:text-sand-offwhite transition-colors duration-200">
+              Home
+            </Link>
+            <Link to="/about" className="text-xs text-sand-medium hover:text-sand-offwhite transition-colors duration-200">
+              About Us
+            </Link>
+            <Link to="/projects" className="text-xs text-sand-medium hover:text-sand-offwhite transition-colors duration-200">
+              Projects & OS
+            </Link>
+            <Link to="/blog" className="text-xs text-sand-medium hover:text-sand-offwhite transition-colors duration-200">
+              Blog & Insights
+            </Link>
+            <Link to="/contact" className="text-xs text-sand-medium hover:text-sand-offwhite transition-colors duration-200">
+              Contact & Ingestion
+            </Link>
           </div>
 
           {/* Secure Contact */}
@@ -48,6 +55,9 @@ export default function Footer() {
             <span className="text-xs text-sand-medium">
               Secure Line: +1 (800) DUNE-BORN
             </span>
+            <Link to="/schedule" className="text-xs text-spice-gold hover:underline mt-1 font-semibold">
+              Book Ingestion Call &rarr;
+            </Link>
           </div>
         </div>
 
