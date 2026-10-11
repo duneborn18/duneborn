@@ -1,8 +1,8 @@
-import { useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { ArrowLeft, Calendar, Clock, Share2, ArrowRight, List } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, Share2, ArrowRight, List, Check, Copy } from 'lucide-react';
 import { getPostBySlug, getRelatedPosts } from '../utils/blog';
 
 interface TocItem {
@@ -53,15 +53,33 @@ export default function BlogPost() {
     );
   }
 
-  const handleShare = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  const handleShareTwitter = () => {
+    const text = encodeURIComponent(`${post.title} by ${post.author}`);
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleShareLinkedIn = () => {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleNativeShare = () => {
     if (navigator.share) {
       navigator.share({
         title: post.title,
         url: window.location.href,
       }).catch(() => {});
     } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert('Article link copied to clipboard!');
+      handleCopyLink();
     }
   };
 
@@ -118,13 +136,51 @@ export default function BlogPost() {
               </div>
             </div>
 
-            <button
-              onClick={handleShare}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-sand-medium/20 text-sand-medium hover:text-sand-offwhite text-xs uppercase tracking-wider rounded-sm transition-colors cursor-pointer"
-            >
-              <Share2 size={12} />
-              Share Article
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleCopyLink}
+                className={`inline-flex items-center gap-2 px-3.5 py-1.5 border text-xs uppercase tracking-wider rounded-sm transition-all duration-300 cursor-pointer ${
+                  copied
+                    ? 'bg-spice-gold/20 border-spice-gold text-spice-gold font-bold shadow-[0_0_15px_rgba(216,155,74,0.3)]'
+                    : 'bg-white/5 border-sand-medium/20 text-sand-medium hover:text-sand-offwhite hover:border-sand-medium/40'
+                }`}
+                title="Copy direct article URL"
+              >
+                {copied ? <Check size={13} className="text-spice-gold" /> : <Copy size={13} />}
+                <span>{copied ? 'Copied Link!' : 'Copy Link'}</span>
+              </button>
+
+              <button
+                onClick={handleShareTwitter}
+                className="p-2 bg-white/5 border border-sand-medium/20 text-sand-medium hover:text-sand-offwhite hover:border-sand-medium/40 rounded-sm transition-colors cursor-pointer"
+                title="Share on X / Twitter"
+                aria-label="Share on X"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </button>
+
+              <button
+                onClick={handleShareLinkedIn}
+                className="p-2 bg-white/5 border border-sand-medium/20 text-sand-medium hover:text-sand-offwhite hover:border-sand-medium/40 rounded-sm transition-colors cursor-pointer"
+                title="Share on LinkedIn"
+                aria-label="Share on LinkedIn"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
+                </svg>
+              </button>
+
+              <button
+                onClick={handleNativeShare}
+                className="p-2 bg-white/5 border border-sand-medium/20 text-sand-medium hover:text-sand-offwhite hover:border-sand-medium/40 rounded-sm transition-colors cursor-pointer sm:hidden"
+                title="Share"
+                aria-label="Share"
+              >
+                <Share2 size={14} />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -244,6 +300,64 @@ export default function BlogPost() {
                   #{tag}
                 </span>
               ))}
+            </div>
+
+            {/* Bottom Share Article Widget */}
+            <div className="mt-10 p-6 glass-panel rounded-sm border border-sand-medium/15 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div>
+                <span className="text-[10px] uppercase tracking-widest text-spice-gold font-mono font-bold block mb-1">
+                  Share this Research
+                </span>
+                <p className="text-sm font-bold text-sand-offwhite uppercase tracking-wide">
+                  Share this insight with your team & network
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <button
+                  onClick={handleCopyLink}
+                  className={`inline-flex items-center gap-2 px-4 py-2 border text-xs uppercase tracking-wider rounded-sm transition-all duration-300 cursor-pointer flex-1 sm:flex-initial justify-center ${
+                    copied
+                      ? 'bg-spice-gold/20 border-spice-gold text-spice-gold font-bold shadow-[0_0_15px_rgba(216,155,74,0.3)]'
+                      : 'bg-white/5 border-sand-medium/20 text-sand-medium hover:text-sand-offwhite hover:border-sand-medium/40'
+                  }`}
+                  title="Copy link"
+                >
+                  {copied ? <Check size={13} className="text-spice-gold" /> : <Copy size={13} />}
+                  <span>{copied ? 'Copied!' : 'Copy Link'}</span>
+                </button>
+
+                <button
+                  onClick={handleShareTwitter}
+                  className="p-2.5 bg-white/5 border border-sand-medium/20 text-sand-medium hover:text-sand-offwhite hover:border-sand-medium/40 rounded-sm transition-colors cursor-pointer"
+                  title="Share on X / Twitter"
+                  aria-label="Share on X"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={handleShareLinkedIn}
+                  className="p-2.5 bg-white/5 border border-sand-medium/20 text-sand-medium hover:text-sand-offwhite hover:border-sand-medium/40 rounded-sm transition-colors cursor-pointer"
+                  title="Share on LinkedIn"
+                  aria-label="Share on LinkedIn"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={handleNativeShare}
+                  className="p-2.5 bg-white/5 border border-sand-medium/20 text-sand-medium hover:text-sand-offwhite hover:border-sand-medium/40 rounded-sm transition-colors cursor-pointer sm:hidden"
+                  title="Share"
+                  aria-label="Share"
+                >
+                  <Share2 size={16} />
+                </button>
+              </div>
             </div>
           </article>
         </div>

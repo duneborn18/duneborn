@@ -1,5 +1,3 @@
-import matter from 'gray-matter';
-
 export interface BlogPost {
   slug: string;
   title: string;
@@ -13,6 +11,40 @@ export interface BlogPost {
 }
 
 export type InsightPost = BlogPost;
+
+// Browser-safe zero-dependency frontmatter parser (avoids Node Buffer crashes)
+function parseFrontmatter(fileContent: string): { data: Record<string, any>; content: string } {
+  const match = fileContent.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+  if (!match) {
+    return { data: {}, content: fileContent };
+  }
+  const rawYaml = match[1];
+  const content = match[2];
+  const data: Record<string, any> = {};
+
+  const lines = rawYaml.split(/\r?\n/);
+  for (const line of lines) {
+    const colonIdx = line.indexOf(':');
+    if (colonIdx === -1) continue;
+    const key = line.slice(0, colonIdx).trim();
+    let val = line.slice(colonIdx + 1).trim();
+
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+      data[key] = val;
+    } else if (val.startsWith('[') && val.endsWith(']')) {
+      try {
+        data[key] = JSON.parse(val.replace(/'/g, '"'));
+      } catch {
+        data[key] = val.slice(1, -1).split(',').map((s) => s.trim().replace(/^['"]|['"]$/g, ''));
+      }
+    } else {
+      data[key] = val;
+    }
+  }
+
+  return { data, content };
+}
 
 // Vite's import.meta.glob to load all markdown files in src/content/insights/ and src/content/blog/
 const rawMarkdownFiles = import.meta.glob(
@@ -38,7 +70,7 @@ export function getAllPosts(): BlogPost[] {
     const slug = path.split('/').pop()?.replace(/\.md$/, '') || '';
 
     try {
-      const { data, content } = matter(fileContent);
+      const { data, content } = parseFrontmatter(fileContent);
 
       posts.push({
         slug,
