@@ -36,8 +36,8 @@ export default function Footer() {
             <Link to="/projects" className="text-xs text-sand-medium hover:text-sand-offwhite transition-colors duration-200">
               Projects & OS
             </Link>
-            <Link to="/blog" className="text-xs text-sand-medium hover:text-sand-offwhite transition-colors duration-200">
-              Blog & Insights
+            <Link to="/insights" className="text-xs text-sand-medium hover:text-sand-offwhite transition-colors duration-200">
+              Insights & Research
             </Link>
             <Link to="/contact" className="text-xs text-sand-medium hover:text-sand-offwhite transition-colors duration-200">
               Contact & Ingestion

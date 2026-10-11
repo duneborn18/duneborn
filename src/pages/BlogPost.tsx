@@ -43,10 +43,10 @@ export default function BlogPost() {
           <h2 className="text-2xl font-bold uppercase tracking-wide text-sand-offwhite mb-4">Post Not Found</h2>
           <p className="text-xs text-sand-medium mb-6">The requested article could not be located.</p>
           <button
-            onClick={() => navigate('/blog')}
+            onClick={() => navigate('/insights')}
             className="px-6 py-3 bg-spice-gold text-brand-black font-semibold text-xs uppercase tracking-widest rounded-sm"
           >
-            Back to Blog
+            Back to Insights
           </button>
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function BlogPost() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Back Link */}
         <Link
-          to="/blog"
+          to="/insights"
           className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-sand-medium hover:text-sand-offwhite transition-colors mb-8 cursor-pointer font-semibold"
         >
           <ArrowLeft size={14} />
@@ -264,7 +264,7 @@ export default function BlogPost() {
               {relatedPosts.map((rel) => (
                 <Link
                   key={rel.slug}
-                  to={`/blog/${rel.slug}`}
+                  to={`/insights/${rel.slug}`}
                   className="glass-panel p-6 rounded-sm border border-sand-medium/15 flex flex-col justify-between hover:border-spice-gold/40 transition-all group"
                 >
                   <div className="space-y-3">

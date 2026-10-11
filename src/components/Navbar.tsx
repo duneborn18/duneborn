@@ -30,7 +30,7 @@ export default function Navbar() {
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Projects', path: '/projects' },
-    { label: 'Blog', path: '/blog' },
+    { label: 'Insights', path: '/insights' },
     { label: 'Contact', path: '/contact' },
   ];
 

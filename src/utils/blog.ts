@@ -12,11 +12,16 @@ export interface BlogPost {
   content: string;
 }
 
-// Vite's import.meta.glob to load all markdown files in src/content/blog/
-const rawMarkdownFiles = import.meta.glob('/src/content/blog/*.md', {
-  query: '?raw',
-  eager: true,
-}) as Record<string, { default: string } | string>;
+export type InsightPost = BlogPost;
+
+// Vite's import.meta.glob to load all markdown files in src/content/insights/ and src/content/blog/
+const rawMarkdownFiles = import.meta.glob(
+  ['/src/content/insights/*.md', '/src/content/blog/*.md'],
+  {
+    query: '?raw',
+    eager: true,
+  }
+) as Record<string, { default: string } | string>;
 
 let cachedPosts: BlogPost[] | null = null;
 
@@ -89,3 +94,9 @@ function calculateReadTime(text: string): string {
   const minutes = Math.ceil(numberOfWords / wordsPerMinute);
   return `${minutes} min read`;
 }
+
+// Aliases for Insights terminology
+export const getAllInsights = getAllPosts;
+export const getInsightBySlug = getPostBySlug;
+export const getRelatedInsights = getRelatedPosts;
+
