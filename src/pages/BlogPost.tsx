@@ -61,12 +61,6 @@ export default function BlogPost() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleShareTwitter = () => {
-    const text = encodeURIComponent(`${post.title} by ${post.author}`);
-    const url = encodeURIComponent(window.location.href);
-    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'noopener,noreferrer');
-  };
-
   const handleShareLinkedIn = () => {
     const url = encodeURIComponent(window.location.href);
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'noopener,noreferrer');
@@ -148,17 +142,6 @@ export default function BlogPost() {
               >
                 {copied ? <Check size={13} className="text-spice-gold" /> : <Copy size={13} />}
                 <span>{copied ? 'Copied Link!' : 'Copy Link'}</span>
-              </button>
-
-              <button
-                onClick={handleShareTwitter}
-                className="p-2 bg-white/5 border border-sand-medium/20 text-sand-medium hover:text-sand-offwhite hover:border-sand-medium/40 rounded-sm transition-colors cursor-pointer"
-                title="Share on X / Twitter"
-                aria-label="Share on X"
-              >
-                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
               </button>
 
               <button
@@ -325,17 +308,6 @@ export default function BlogPost() {
                 >
                   {copied ? <Check size={13} className="text-spice-gold" /> : <Copy size={13} />}
                   <span>{copied ? 'Copied!' : 'Copy Link'}</span>
-                </button>
-
-                <button
-                  onClick={handleShareTwitter}
-                  className="p-2.5 bg-white/5 border border-sand-medium/20 text-sand-medium hover:text-sand-offwhite hover:border-sand-medium/40 rounded-sm transition-colors cursor-pointer"
-                  title="Share on X / Twitter"
-                  aria-label="Share on X"
-                >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
                 </button>
 
                 <button

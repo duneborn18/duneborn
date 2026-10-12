@@ -4,7 +4,7 @@ date: "2026-10-04"
 description: "Every chatbot fails sometimes. The real question is whether those failures are lost in chat logs or become the raw material for improvement."
 cover: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1400&q=80"
 tags: ["Agentic AI", "Observability", "Evals", "Architecture"]
-author: "Bhanu Shakya"
+author: "Duneborn Engineering"
 readTime: "6 min read"
 ---
 
@@ -24,7 +24,7 @@ It is an engineering pipeline that **automatically surfaces and diagnoses produc
 
 The continuous loop operates in seven deliberate stages:
 
-1. **Trace Logging**: Store every conversation in full — user messages, retrieved documents, tool invocations, and generated outputs, with PII/sensitive data redacted.
+1. **Trace Logging**: Store every conversation in full: user messages, retrieved documents, tool invocations, and generated outputs, with PII/sensitive data redacted.
 2. **Classification**: A fast, cost-efficient classifier inspects every conversational turn and flags probable failures.
 3. **Nightly Clustering**: A scheduled job groups the flagged turns by semantic similarity, turning 2,000 raw conversational failures into ~15 distinct recurring operational problems.
 4. **LLM Analysis**: A reasoning model examines representative samples from each cluster, determines the root cause, and synthesizes a proposed fix.
@@ -42,7 +42,7 @@ Why use a specialized classifier instead of directing a frontier reasoning model
 
 **Cost and latency.** If you process 10,000 conversations daily, executing a frontier model over every single exchange is prohibitively expensive and introduces unnecessary overhead. A classifier makes small, structured, deterministic judgments (*"failed / not failed"*, *"rephrase / correction / follow-up"*) at a fraction of the cost.
 
-One emerging option is **Jev from TypeSafe AI** — a "System One" classification model returning typed decisions and confidence probabilities instead of raw free-form text. It targets classification, routing, scoring, and moderation, having entered early access in September 2026. Because it is so new, treat vendor performance claims with healthy skepticism, benchmark against your own domain data, and maintain a modular, swappable interface. A fine-tuned compact SLM or an optimized small LLM can occupy the exact same slot.
+One emerging option is **Jev from TypeSafe AI**, a "System One" classification model returning typed decisions and confidence probabilities instead of raw free-form text. It targets classification, routing, scoring, and moderation, having entered early access in September 2026. Because it is so new, treat vendor performance claims with healthy skepticism, benchmark against your own domain data, and maintain a modular, swappable interface. A fine-tuned compact SLM or an optimized small LLM can occupy the exact same slot.
 
 ### What Should the Classifier Look For?
 
@@ -119,7 +119,7 @@ Once merged, roll out incrementally via canary deployments, because synthetic of
 
 ## Crucial Production Safety Considerations
 
-- **Prompt Injection Defense**: User dialogues feed into your backend analyst model. Treat conversation transcripts as untrusted user input — adversarial users can embed jailbreaks designed to manipulate the analysis engine.
+- **Prompt Injection Defense**: User dialogues feed into your backend analyst model. Treat conversation transcripts as untrusted user input; adversarial users can embed jailbreaks designed to manipulate the analysis engine.
 - **PII Scrubbing & Data Privacy**: Redact sensitive customer data, API tokens, and credentials prior to ingestion by secondary analysis models.
 - **Silent Failure Auditing**: Routinely sample randomly from unflagged conversations to audit classifier false-negative rates.
 - **Pipeline Self-Telemetry**: Benchmark the classifier's precision and recall against ground-truth human annotations, and graph cluster recurrence rates over time to prove engineering ROI.

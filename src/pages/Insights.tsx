@@ -23,6 +23,10 @@ export default function Insights() {
     });
   }, [allPosts, selectedTag, searchQuery]);
 
+  // The featured banner only shows when no filter is active; the grid then skips that post so it is not listed twice
+  const showFeatured = Boolean(featuredPost) && searchQuery === '' && selectedTag === 'All';
+  const gridPosts = showFeatured ? filteredPosts.filter((post) => post.slug !== featuredPost.slug) : filteredPosts;
+
   return (
     <div className="pt-32 pb-24 bg-brand-black min-h-screen relative overflow-hidden">
       {/* Ambient background patterns */}
@@ -52,7 +56,7 @@ export default function Insights() {
         </div>
 
         {/* Featured Post Hero Banner */}
-        {featuredPost && searchQuery === '' && selectedTag === 'All' && (
+        {showFeatured && (
           <div className="mb-16 glass-panel rounded-sm border border-spice-gold/25 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
               <div className="lg:col-span-7 p-8 md:p-12 space-y-6">
@@ -139,9 +143,9 @@ export default function Insights() {
         </div>
 
         {/* Insights Cards Grid */}
-        {filteredPosts.length > 0 ? (
+        {gridPosts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
+            {gridPosts.map((post) => (
               <article
                 key={post.slug}
                 className="glass-panel rounded-sm border border-sand-medium/15 overflow-hidden flex flex-col justify-between hover:border-spice-gold/40 transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)] group"
@@ -203,7 +207,7 @@ export default function Insights() {
               </article>
             ))}
           </div>
-        ) : (
+        ) : showFeatured ? null : (
           <div className="glass-panel p-12 text-center rounded-sm max-w-xl mx-auto border border-sand-medium/15">
             <BookOpen size={32} className="text-sand-medium mx-auto mb-4" />
             <h3 className="text-lg font-bold text-sand-offwhite uppercase tracking-wider mb-2">No Articles Found</h3>
